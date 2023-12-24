@@ -1,0 +1,12 @@
+what is streamlit ?
+- A Python framework for fast, intuitive web app development. 
+- It simplifies complex tasks, enabling quick creation of interactive applications that seamlessly integrate data sources and AI/ML models. 
+
+
+Advantages of streamlit
+- Simplicity: Intuitive Python framework for clean app creation, accessible to diverse skill levels, doesn't need HTML CSS.
+- Speed: Quick setup ideal for rapid development and iterative processes, boosting productivity.
+- Real-time Interaction: Instant updates engage users, fostering responsive experiences, easy to deploy.
+- Customization: Abundance of widgets and layouts for precise app tailoring.
+- Integration: Seamless inclusion of data science tools and ML frameworks.
+- Collaboration: Effortless sharing fosters effective teamwork and remote collaboration.
