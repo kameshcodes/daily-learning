@@ -31,6 +31,7 @@ for (kX, kY) in kernelsizes:
     cv2.destroyAllWindows()
     
 # Median Blur 
+# effective when removing salt-and-pepper noise
 for k in (3, 9, 15):
     blurred_img = cv2.medianBlur(image, k) 
     cv2.imshow(f"Meadian K {k}", blurred_img)
