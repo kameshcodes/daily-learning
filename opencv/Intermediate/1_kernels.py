@@ -22,3 +22,10 @@ for (kX, kY) in kernelsizes:
     cv2.imshow(f"Average ({kX}, {kY})", blurred_img)
     cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# Gaussian Blurr
+for (kX, kY) in kernelsizes:
+    blurred_img = cv2.GaussianBlur(image, (kX,kY), 0) #read parameters of this 
+    cv2.imshow(f"Gaussian ({kX}, {kY})", blurred_img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
