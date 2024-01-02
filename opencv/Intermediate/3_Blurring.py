@@ -27,7 +27,7 @@ cv2.imshow("Original", image)
 
 # Gaussian Blur
 for (kX, kY) in kernelsizes:
-    blurred_img = cv2.GaussianBlur(image, (kX,kY), 0) #read parameters of this 
+    blurred_img = cv2.GaussianBlur(image, (kX,kY), 0, 0,) #read parameters of this 
     cv2.imshow(f"Gaussian ({kX}, {kY})", blurred_img)
     cv2.waitKey(0)
     
