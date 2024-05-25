@@ -3,9 +3,9 @@ title: '#Hypothesis Testing: Simple Linear Model'
 author: "Kamesh Dubey"
 date: "`r Sys.Date()`"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 ## 1. Generate Data
@@ -60,7 +60,7 @@ summary(model)
 
 - R-Squared: 0.743, Adjusted R-Squared:0.729. We can conclude that age explain the heart rate quite well
 
-- The equation for heart rate from **Linear Model** can be expressed as:$ \text{heart rate} = 219.1365 - 1.0221 \times \text{age}$
+- The equation for heart rate from **Linear Model** can be expressed as: $\text{heart rate} = 219.1365 - 1.0221 \times \text{age}$
 
 
 
@@ -79,7 +79,7 @@ cat("\n\nSummary of Residual\n")
 print(summary(res))
 ```
 - From Residual summary we have: 
-                              $\sum_{i=1}^{20} e_{i}=0$ or $$\bar{e_{i}}=0$$
+                              $\sum_{i=1}^{20} e_{i}=0$ or $\bar{e_{i}}=0$
 
 
 
@@ -122,7 +122,7 @@ cat("\n\nSigma_hat=", sigma_hat)
 cat("\n\nSE(beta_0)=", Std_err_beta_0)
 ```
 
-#### Test for $\betas$**
+#### Test for betas
 
 ---
 
@@ -148,7 +148,7 @@ The p-value of 0.99 (>>0.05) tell us that $\beta_{0}=0$ is not likely.
 This time, Let's Consider 
 
 
-$$H_0: \beta_{0} = -1 \quad \text{vs}  \quad H_1: \beta_{0} \neq -1$$
+    $$H_0: \beta_{0} = -1 \quad \text{vs}  \quad H_1: \beta_{0} \neq -1$$
 
 ```{r}
 Sxx = sqrt(sum(age=mean(age)^2))
