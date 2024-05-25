@@ -1,0 +1,165 @@
+---
+title: '#Hypothesis Testing: Simple Linear Model'
+author: "Kamesh Dubey"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+## 1. Generate Data
+
+--- 
+
+```{r}
+set.seed(0)
+
+age = round(runif(20, min=20, max = 80))
+
+heartrate = (220-age)
+heartrate = round(heartrate + rnorm(20, mean=0, sd=15))
+
+cat("Age:", age )
+cat("\n\nHearbeat:", heartrate)
+```
+## Create a Dataframe
+
+---
+
+```{r}
+data = data.frame(Age=age, Heartrate=heartrate)
+
+print(data)
+```
+
+## Plot Age and Heartbeart
+
+---
+
+```{r}
+par(plt=c(0.2, 0.8, 0.2, 0.75))
+plot(age, heartrate,
+     xlab = "Age", ylab="Heart Rate",
+     main = "Age Vs. Heart Rate scatterplot",
+     pch=16, col="steelblue")
+```
+
+## Simple Linear Model
+
+---
+
+```{r}
+model = lm(heartrate~age)
+summary(model)
+```
+
+#### Observations
+
+- using p-values, we can see that both Intercept and age are significant.
+
+- R-Squared: 0.743, Adjusted R-Squared:0.729. We can conclude that age explain the heart rate quite well
+
+- The equation for heart rate from **Linear Model** can be expressed as:$ \text{heart rate} = 219.1365 - 1.0221 \times \text{age}$
+
+
+
+
+## Residual Analysis
+
+---
+
+```{r}
+res = residuals(model)
+pred = fitted(model)
+
+cat("Fitted-Values: ", pred)
+cat("\n\nResidual: ", res)
+cat("\n\nSummary of Residual\n")
+print(summary(res))
+```
+- From Residual summary we have: 
+                              $\sum_{i=1}^{20} e_{i}=0$ or $$\bar{e_{i}}=0$$
+
+
+
+```{r echo=FALSE}
+par(plt=c(0.2, 0.8, 0.2, 0.75))
+
+plot(pred, res,
+     xlab="Fitted-Values", ylab="Residuals",
+     main="Residual Vs. Fitted Values",
+     pch=16, col="steelblue")
+abline(h=0, col="red", lwd=2, lty=2)
+
+```
+
+#### From the Residual vs Fitted Values plot, We can conclude that 
+- Residuals are Randomly Scattered around Zero mean.
+- No Systematic pattern can be seen in the plot.
+- Variance of Residual seems Constant
+- No sign of outliers.
+
+
+## Testing of Hypothesis
+
+---
+
+```{r}
+n = length(age)
+
+beta_0_hat = coef(model)[["age"]]
+
+RSS=sum(res^2)
+
+sigma_hat = sqrt(RSS/n-2)
+
+Sxx = sqrt(sum(age=mean(age)^2))
+Std_err_beta_0 = sigma_hat/Sxx
+
+cat("beta_0=", beta_0_hat)
+cat("\n\nSigma_hat=", sigma_hat)
+cat("\n\nSE(beta_0)=", Std_err_beta_0)
+```
+
+#### Test for $\betas$**
+
+---
+
+- **for $\beta_{0}$**
+
+Consider
+
+$$H_0: \beta_{0} = 0 \quad \text{vs} \quad H_1: \beta_{0} \neq 0 $$
+Then,
+```{r}
+t_0 = (beta_0_hat-(-0))/Std_err_beta_0
+
+cat("       Under Ho,\n                   t-statistic value= ", t_0)
+
+p_value = pt(t_0, 20, lower.tail=FALSE)
+
+cat("\n\n     The corresponding p-value for the test statistic will be:\n\n                     p-value=", p_value)
+```
+The p-value of 0.99 (>>0.05) tell us that $\beta_{0}=0$ is not likely. 
+
+---
+
+This time, Let's Consider 
+
+
+$$H_0: \beta_{0} = -1 \quad \text{vs}  \quad H_1: \beta_{0} \neq -1$$
+
+```{r}
+Sxx = sqrt(sum(age=mean(age)^2))
+Std_err_beta_0 = sigma_hat/Sxx
+
+t = (beta_0_hat-(-1))/Std_err_beta_0
+cat("Under Ho,\n            t-statistic value= ", t )
+
+p_value = pt(t, 20, lower.tail=FALSE)
+
+cat("\n\n The corresponding p-value for the test statistic will be:\n\n              p-value=", p_value)
+```
+The p-value of 0.99 (>>0.05) tell us that $\beta_{0}=-1$ is also not likely. 
+
