@@ -3,6 +3,8 @@ title: "Non-Parametric Tests for Location and Dispersion"
 author: "Kamesh Dubey"
 date: '`r Sys.Date()`'
 output:
+  html_document:
+    df_print: paged
   pdf_document:
     latex_engine: xelatex
 ---
@@ -150,5 +152,14 @@ cat("P-value:", p_value, "\n")
 ```
 Here, 
       p>0.05. Then, we can't reject null. Hence, we can reject null hypothesis, ie $\tilde{x}=0$
+      
+<br> 
+<br>
+
+$\textbf{The assumptions of one-sample sign test are:}$
+
+- The observations in the sample must be independent of each other
+- Ordinal or continuous data, so at atleast ranking is possible
+- No need for a symmetric distribution.
 
 
