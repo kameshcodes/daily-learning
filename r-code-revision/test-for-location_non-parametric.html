@@ -11,9 +11,9 @@
 
 <meta name="author" content="Kamesh Dubey" />
 
-<meta name="date" content="2024-06-06" />
+<meta name="date" content="2024-06-07" />
 
-<title>Non-Parametric Tests for Location and Dispersion</title>
+<title>Non-Parametric Tests for Location: Median</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1621,16 +1621,16 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Non-Parametric Tests for Location and
-Dispersion</h1>
+<h1 class="title toc-ignore">Non-Parametric Tests for Location:
+Median</h1>
 <h4 class="author">Kamesh Dubey</h4>
-<h4 class="date">2024-06-06</h4>
+<h4 class="date">2024-06-07</h4>
 
 </div>
 
 
-<div id="test-for-location" class="section level1">
-<h1><strong>1. Test For Location</strong></h1>
+<div id="one-sample-tests" class="section level1">
+<h1><strong>1. One Sample Tests</strong></h1>
 <div id="sign-test" class="section level2">
 <h2><strong>1.1 Sign Test</strong></h2>
 <hr />
@@ -1798,7 +1798,23 @@ other</li>
 <li>Ordinal or continuous data, so at atleast ranking is possible</li>
 <li>No need for a symmetric distribution.</li>
 </ul>
+<p><span class="math inline">\(\textbf{Limitation of one-sample sign
+test:}\)</span></p>
+<ul>
+<li><p>The main problem with the sign test is that it treats all values
+&gt; <span class="math inline">\(M_0\)</span> as equally important,
+without considering the difference from the assumed median. It ignores
+the actual magnitudes of the differences.</p></li>
+<li><p>For example, a difference of <span class="math inline">\(0.1\)</span> and a difference of <span class="math inline">\(1000\)</span> are both treated simply as positive
+differences, without considering their size.</p></li>
+</ul>
+<hr />
+<p><br> <br> <br> <br></p>
 </div>
+</div>
+<div id="wilcoxon-sign-rank-test" class="section level2">
+<h2><strong>1.2 Wilcoxon Sign-Rank Test</strong></h2>
+<hr />
 </div>
 </div>
 

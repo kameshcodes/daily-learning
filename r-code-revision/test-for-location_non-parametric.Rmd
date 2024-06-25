@@ -1,16 +1,16 @@
 ---
-title: "Non-Parametric Tests for Location and Dispersion"
+title: "Non-Parametric Tests for Location: Median"
 author: "Kamesh Dubey"
 date: '`r Sys.Date()`'
 output:
-  pdf_document:
-    latex_engine: xelatex
   html_document:
     df_print: paged
+  pdf_document:
+    latex_engine: xelatex
 ---
 
 
-# **1. Test For Location**
+# **1. One Sample Tests**
 
 ## **1.1 Sign Test**
 
@@ -78,6 +78,9 @@ The p-value of 0.3877 suggests that there is insufficient evidence to reject the
 <br>
 
 #### **Lets say our data has some 0's as observation, i.e. some observations are equal to mean. What to do in that case ?**
+
+<br>
+
 ```{r}
 y = c(2, 3, 5, 0, 4, 5, 1, -2, 3, -3, 6, 7, 1, -1)
 
@@ -162,4 +165,28 @@ $\textbf{The assumptions of one-sample sign test are:}$
 - Ordinal or continuous data, so at atleast ranking is possible
 - No need for a symmetric distribution.
 
+
+$\textbf{Limitation of one-sample sign test:}$
+
+- The main problem with the sign test is that it treats all values > \( M_0 \) as equally important, without considering the difference from the assumed median. It ignores the actual magnitudes of the differences. 
+
+- For example, a difference of $0.1$ and a difference of $1000$ are both treated simply as positive differences, without considering their size.
+
+---
+
+
+<br> 
+<br> 
+<br>
+<br>
+
+
+
+## **1.2 Wilcoxon Sign-Rank Test**
+
+---
+
+```{r}
+
+```
 
